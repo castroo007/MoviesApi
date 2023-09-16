@@ -2,6 +2,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import movieRouter from "./routes/movieRouter.js";
+import authRouter from "./routes/authRouter.js";
 import cors from "cors";
 import fileUpload from "express-fileupload";
 import mongoose from "mongoose";
@@ -30,6 +31,7 @@ app.use(express.static("static"));
 app.use(fileUpload());
 
 app.use("/api", movieRouter);
+app.use("/auth", authRouter);
 
 // The data format
 app.use(express.json());

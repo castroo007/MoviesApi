@@ -11,8 +11,8 @@ router.post(
 );
 router.delete("/roles/:id", AuthController.deleteRole);
 
-const passwordRegex =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+// const passwordRegex =
+//   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 router.post(
   "/register",
@@ -20,11 +20,9 @@ router.post(
     check("name", "Name can't be empty").notEmpty(),
     check("email", "Email can't be empty").notEmpty(),
     check("email", "Invalid email").isEmail(),
-    check("password")
-      .notEmpty()
-      .withMessage("Password is required")
-      .matches(passwordRegex)
-      .withMessage("Password must be safe and secure"),
+    check("password").notEmpty().withMessage("Password is required"),
+    // .matches(passwordRegex)
+    // .withMessage("Password must be safe and secure"),
   ],
   AuthController.register
 );
